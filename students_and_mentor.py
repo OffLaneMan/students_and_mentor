@@ -22,10 +22,6 @@ class Student:
             return "Оценка должна быть от 0 до 10"
 
     def __str__(self):
-        grades = [y for x in self.grades.values() for y in x]
-        average_grade = (
-            f"{sum(grades) / len(grades):.1f}" if len(grades) > 0 else "Оценок нет"
-        )
         courses_in_progress = (
             ", ".join(self.courses_in_progress)
             if len(self.courses_in_progress) > 0
@@ -39,9 +35,97 @@ class Student:
         courses_in_progress = ", ".join(self.courses_in_progress)
         return f"""Имя: {self.name}
 Фамилия: {self.surname}
-Cредняя оценка за домашние задания: {average_grade}
+Cредняя оценка за домашние задания: {self.average_grade()}
 Курсы в процессе изучения: {courses_in_progress}
 Завершенные курсы: {finished_courses}"""
+
+    def average_grade(self):
+        grades = [y for x in self.grades.values() for y in x]
+        return f"{sum(grades) / len(grades):.1f}" if len(grades) > 0 else "Оценок нет"
+
+    def __eq__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() == other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __ne__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() != other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __lt__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() < other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __le__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() <= other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __gt__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() > other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __ge__(self, other):
+        if isinstance(other, Student):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() >= other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
 
 
 class Mentor:
@@ -57,13 +141,97 @@ class Lector(Mentor):
         self.Lecturer = {}
 
     def __str__(self):
-        grades = [y for x in self.Lecturer.values() for y in x]
-        average_grade = (
-            f"{sum(grades) / len(grades):.1f}" if len(grades) > 0 else "Оценок нет"
-        )
         return f"""Имя: {self.name}
 Фамилия: {self.surname}
-Средняя оценка за лекции: {average_grade}"""
+Средняя оценка за лекции: {self.average_grade()}"""
+
+    def average_grade(self):
+        grades = [y for x in self.Lecturer.values() for y in x]
+        return f"{sum(grades) / len(grades):.1f}" if len(grades) > 0 else "Оценок нет"
+
+    def __eq__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() == other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __ne__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() != other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __lt__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() < other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __le__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() <= other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __gt__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() > other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
+
+    def __ge__(self, other):
+        if isinstance(other, Lector):
+            if (
+                self.average_grade() != "Оценок нет"
+                and other.average_grade() != "Оценок нет"
+            ):
+                return self.average_grade() >= other.average_grade()
+            else:
+                print("Невозможно сравнить")
+                return False
+        else:
+            print("Вы сравниваете объекты разного типа")
+            return False
 
 
 class Reviewer(Mentor):
@@ -120,6 +288,7 @@ reviewers2.rate_hw(student2, "python", 8)
 reviewers2.rate_hw(student2, "python", 7)
 
 student1.rate_lecturer(lectors1, "python", 10)
+student1.rate_lecturer(lectors1, "python", 9)
 student1.rate_lecturer(lectors2, "python", 9)
 
 
@@ -129,6 +298,10 @@ student1.rate_lecturer(lectors2, "python", 9)
 # print(lectors2)
 # print(reviewers1)
 # print(reviewers2)
+# print (lectors1 > student2)
+# print (student1 <= student2)
+# print(type(lectors1))
+# print(type(lectors2))
 
 
 def average_rate_students(students, course):
